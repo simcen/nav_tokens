@@ -1,0 +1,42 @@
+<form script="token_helper.js">
+  <label>Token Test View 1</label>
+  <fieldset submitButton="true" autoRun="true">
+    <input type="dropdown" token="component">
+      <label>Component:</label>
+      <search>
+        <query>index=_internal | top 10 component</query>
+        <earliest>@d</earliest>
+        <latest>now</latest>
+      </search>
+      <fieldForLabel>component</fieldForLabel>
+      <fieldForValue>component</fieldForValue>
+      <default>Metrics</default>
+    </input>
+    <input type="text" token="filter" searchWhenChanged="true">
+      <label>Message Filter:</label>
+      <default>*</default>
+      <initialValue>*</initialValue>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <event>
+        <search>
+          <query>index=_internal component="$component$" message="*$filter$*"</query>
+          <earliest>@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="count">10</option>
+        <option name="list.drilldown">full</option>
+        <option name="list.wrap">1</option>
+        <option name="maxLines">5</option>
+        <option name="raw.drilldown">full</option>
+        <option name="rowNumbers">0</option>
+        <option name="table.drilldown">all</option>
+        <option name="table.wrap">1</option>
+        <option name="type">list</option>
+        <fields>[]</fields>
+      </event>
+    </panel>
+  </row>
+</form>
