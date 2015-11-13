@@ -1,7 +1,7 @@
 <form script="token_helper.js">
   <label>Token Test View 1</label>
   <fieldset submitButton="true" autoRun="true">
-    <input type="dropdown" token="component">
+    <input type="dropdown" token="component" searchWhenChanged="true">
       <label>Component:</label>
       <search>
         <query>index=_internal | top 10 component</query>
@@ -10,7 +10,9 @@
       </search>
       <fieldForLabel>component</fieldForLabel>
       <fieldForValue>component</fieldForValue>
-      <default>Metrics</default>
+      <default>*</default>
+      <choice value="*">All</choice>
+      <initialValue>*</initialValue>
     </input>
     <input type="text" token="filter" searchWhenChanged="true">
       <label>Message Filter:</label>

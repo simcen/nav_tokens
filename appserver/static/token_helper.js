@@ -31,8 +31,11 @@ require([
         urlTokens.component = encodeURIComponent(component);
 
         _.each(navUrls, function(navUrl){
-            el = $("li.nav-item-"+navUrl+">a");
-            if (el != undefined) {               
+            console.log("here");
+            //el = $("li.nav-item-"+navUrl+">a");
+            el = $("a[href*=\""+navUrl+"\"]").not("a[target='_blank']").not(".external").not(".btn");
+            if (el != undefined) {              
+                console.debug("el", el) ;
                 urlQuery = _.map(urlTokens, function(val, key) { 
                     return 'form.' + key + '=' + val;
                 });
@@ -47,7 +50,7 @@ require([
         urlTokens.filter = encodeURIComponent(filter);
 
         _.each(navUrls, function(navUrl){
-            el = $("li.nav-item-"+navUrl+">a");
+            el = $("a[href*=\""+navUrl+"\"]").not("a[target='_blank']").not(".external").not(".btn");
             if (el != undefined) {               
                 urlQuery = _.map(urlTokens, function(val, key) { 
                     return 'form.' + key + '=' + val;
